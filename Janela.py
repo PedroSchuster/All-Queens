@@ -5,7 +5,7 @@ from Jogador import Jogador
 
 
 class Janela(tk.Tk):
-    def __init__(self, tabuleiro, jogador_local, click_1, click_posicao):
+    def __init__(self, tabuleiro, jogador_local, click_conexao, click_desconexao, click_posicao):
         super().__init__()
         
         self.click_posicao = click_posicao
@@ -24,8 +24,8 @@ class Janela(tk.Tk):
         self.texto_superior.pack()
 
         # Botões:
-        self.botao_conectar = ttk.Button(self.frame_botoes, text='Conectar', state='normal', command=click_1)
-        self.botao_desconectar = ttk.Button(self.frame_botoes, text='Desconectar', state='disable', command=click_1)
+        self.botao_conectar = ttk.Button(self.frame_botoes, text='Conectar', state='normal', command=click_conexao)
+        self.botao_desconectar = ttk.Button(self.frame_botoes, text='Desconectar', state='disable', command=click_desconexao)
         
         self.botao_conectar.pack()
         self.botao_desconectar.pack()
@@ -46,21 +46,17 @@ class Janela(tk.Tk):
         self.atualiza_tabuleiro(tabuleiro)
 
 
-    def click_conexao(self):
-        #Conectar ao servidor
-        if not self.jogador_local.conectado:
-          self.texto_superior['text'] = 'Conectado'
-          self.botao_conectar['state'] = 'disabled'
-          self.botao_desconectar['state'] = 'normal'
-          self.jogador_local.conectado = True
-          return True
+    def estado_conectado(self):
+        self.texto_superior['text'] = 'Conectado'
+        self.botao_conectar['state'] = 'disabled'
+        self.botao_desconectar['state'] = 'normal'
+        self.jogador_local.conectado = True
        
-        #Desconectar do servidor
+    def estado_desconectado(self):
         self.texto_superior['text'] = 'Clique em conectar para iniciar o jogo'
         self.botao_conectar['state'] = 'normal'
         self.botao_desconectar['state'] = 'disable'
         self.jogador_local.conectado = False 
-        return False
 
     def atualiza_tabuleiro(self, tabuleiro : Tabuleiro):
         for y in range(tabuleiro.tamanho):

@@ -13,15 +13,17 @@ class ActorPlayer(PyNetgamesServerListener):
             self.match_id = ''
             self.tabuleiro = tabuleiro
             
-            self.janela = Janela(self.tabuleiro, self.tabuleiro.jogador, self.click_conexao, self.click_posicao)
+            self.janela = Janela(self.tabuleiro, self.tabuleiro.jogador, self.click_conexao, self.click_desconexao, self.click_posicao)
         #----------------------- Pynetgames ----------------------------------
 
         def click_conexao(self):
-            if self.janela.click_conexao():
-                self.add_listener()
-                return self.send_connection()
-            return self.send_disconnect()
+            self.add_listener()
+            self.send_connection()
+            self.janela.estado_conectado()
             
+        def click_desconexao(self):
+            self.send_disconnect()
+        
         def click_posicao(self, pos):
             if self.janela.jogador_local.conectado: # mudar isso para partida em andamento
                 self.send_move(pos)
@@ -56,12 +58,9 @@ class ActorPlayer(PyNetgamesServerListener):
 
         def receive_disconnect(self):    # Pyng use case "receive disconnect"
             messagebox.showinfo(message='Desconectado do servidor')
-            self.janela.texto_superior['text'] = 'Clique em conectar para iniciar o jogo'
-            self.janela.botao_conectar['state'] = 'normal'
-            self.janela.botao_desconectar['state'] = 'disable'
-            self.janela.jogador_local.conectado = False 
             self.remove_listener()
-
+            self.janela.estado_desconectado()
+            
         def send_disconnect(self):
             self.server_proxy.send_disconnect()
         
