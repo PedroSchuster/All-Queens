@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 from tkinter import ttk
 from Tabuleiro import Tabuleiro
 from Jogador import Jogador
@@ -74,7 +75,6 @@ class Janela(tk.Tk):
                 coluna.append(pos)
             self.posicoes.append(coluna)
             
-
-    
-        
+    def mostrar_mensagem(self, mensagem):
+        messagebox.showinfo("Mensagem", mensagem)
         

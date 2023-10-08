@@ -1,6 +1,3 @@
-from tkinter import *
-import os
-from tkinter import messagebox
 from PyNetGamesServerProxyCustom import PyNetgamesServerProxyCustom
 from py_netgames_client.tkinter_client.PyNetgamesServerListener import PyNetgamesServerListener
 from Janela import Janela
@@ -51,13 +48,13 @@ class ActorPlayer(PyNetgamesServerListener):
 
 
         def receive_connection_success(self):    # Pyng use case "receive connection"
-            messagebox.showinfo(message='Conectado ao servidor') 
+            self.janela.mostrar_mensagem('Conectado ao servidor') 
             self.janela.jogador_local.conectado = True
             self.send_match(2)    # Pyng use case "send match"
 
 
         def receive_disconnect(self):    # Pyng use case "receive disconnect"
-            messagebox.showinfo(message='Desconectado do servidor')
+            self.janela.mostrar_mensagem('Desconectado do servidor')
             self.remove_listener()
             self.janela.estado_desconectado()
             
@@ -65,10 +62,10 @@ class ActorPlayer(PyNetgamesServerListener):
             self.server_proxy.send_disconnect()
         
         def receive_error(self, error):    # Pyng use case "receive error"
-            messagebox.showinfo(message='Notificação de erro do servidor. Feche o programa.') 
+            self.janela.mostrar_mensagem('Notificação de erro do servidor. Feche o programa.') 
 
         def receive_match(self, match):	# Pyng use case "receive match"
-            messagebox.showinfo(message='Partida iniciada') 
+            self.janela.mostrar_mensagem('Partida iniciada') 
             self.set_match_id(match.match_id)
             return
 
@@ -76,7 +73,7 @@ class ActorPlayer(PyNetgamesServerListener):
             self.server_proxy.send_move(self.match_id, move)
         
         def receive_move(self, move):	# Pyng use case "receive move"
-            messagebox.showinfo(message=str(move))
+            self.janela.mostrar_mensagem(str(move))
 
             
 
