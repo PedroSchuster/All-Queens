@@ -5,7 +5,9 @@ from Jogador import Jogador
 class Tabuleiro:
     def __init__(self):
         self.tamanho = 5
-        self.jogador = Jogador('branco')
+        self.jogador_local = Jogador('preto')
+        self.jogador_remoto = Jogador('vermelho')
+
         self.tabuleiro = []
         
         self.inicializar_tabuleiro()

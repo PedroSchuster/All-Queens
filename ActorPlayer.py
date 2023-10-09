@@ -1,16 +1,17 @@
 from PyNetGamesServerProxyCustom import PyNetgamesServerProxyCustom
 from py_netgames_client.tkinter_client.PyNetgamesServerListener import PyNetgamesServerListener
 from Janela import Janela
+from Tabuleiro import Tabuleiro
 
 class ActorPlayer(PyNetgamesServerListener):
 	#	A definição da superclasse demanda a necessidade de sobrescrever métodos abstratos herdados 
 	#	(no primeiro momento, com "pass"; depois, com a implemetação dos correspondentes casos de uso)
-        def __init__(self, tabuleiro):
+        def __init__(self, tabuleiro : Tabuleiro):
             self.server_url = "wss://py-netgames-server.fly.dev"
             self.match_id = ''
             self.tabuleiro = tabuleiro
             
-            self.janela = Janela(self.tabuleiro, self.tabuleiro.jogador, self.click_conexao, self.click_desconexao, self.click_posicao)
+            self.janela = Janela(self.tabuleiro, self.click_conexao, self.click_desconexao, self.click_posicao)
         #----------------------- Pynetgames ----------------------------------
 
         def click_conexao(self):

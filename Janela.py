@@ -6,12 +6,10 @@ from Jogador import Jogador
 
 
 class Janela(tk.Tk):
-    def __init__(self, tabuleiro, jogador_local, click_conexao, click_desconexao, click_posicao):
+    def __init__(self, tabuleiro, click_conexao, click_desconexao, click_posicao):
         super().__init__()
         
         self.click_posicao = click_posicao
-        
-        self.jogador_local = jogador_local
 
         self.posicao_vazio = tk.PhotoImage(file="empty.png")
 
