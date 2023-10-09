@@ -1,4 +1,3 @@
-from Peca import Peca
 
 class Posicao:
     def __init__(self, peca):

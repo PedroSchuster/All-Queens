@@ -1,5 +1,5 @@
-from ActorPlayer import ActorPlayer
-from Tabuleiro import Tabuleiro
+from game_logic.ActorPlayer import ActorPlayer
+from game_logic.Tabuleiro import Tabuleiro
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
-from Posicao import Posicao
-from Peca import Peca
-from Jogador import Jogador
+from game_logic.Posicao import Posicao
+from game_logic.Peca import Peca
+from game_logic.Jogador import Jogador
 
 class Tabuleiro:
     def __init__(self):
