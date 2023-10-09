@@ -13,7 +13,7 @@ class ActorPlayer(PyNetgamesServerListener):
             self.match_id = ''
             self.tabuleiro = tabuleiro
             
-            self.janela = Janela(self.tabuleiro, self.tabuleiro.jogador, self.click_conexao, self.click_desconexao, self.click_posicao)
+            self.janela = Janela(self.tabuleiro, self.click_conexao, self.click_desconexao, self.click_posicao)
         #----------------------- Pynetgames ----------------------------------
 
         def click_conexao(self):
