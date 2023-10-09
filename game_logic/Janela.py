@@ -49,13 +49,11 @@ class Janela(tk.Tk):
         self.texto_superior['text'] = 'Conectado'
         self.botao_conectar['state'] = 'disabled'
         self.botao_desconectar['state'] = 'normal'
-        self.jogador_local.conectado = True
        
     def estado_desconectado(self):
         self.texto_superior['text'] = 'Clique em conectar para iniciar o jogo'
         self.botao_conectar['state'] = 'normal'
         self.botao_desconectar['state'] = 'disable'
-        self.jogador_local.conectado = False 
 
     def atualiza_tabuleiro(self, tabuleiro : Tabuleiro):
         for y in range(tabuleiro.tamanho):

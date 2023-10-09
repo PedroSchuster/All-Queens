@@ -28,3 +28,4 @@ class Tabuleiro:
             else:
                 self.tabuleiro[p[0]][p[1]] = Posicao(Peca("preto"))
             i += 1
+            

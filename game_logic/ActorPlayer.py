@@ -24,8 +24,7 @@ class ActorPlayer(PyNetgamesServerListener):
             self.send_disconnect()
         
         def click_posicao(self, pos):
-            if self.janela.jogador_local.conectado: # mudar isso para partida em andamento
-                self.send_move(pos)
+            self.send_move(pos)
 
         def set_match_id(self, match_id):
             self.match_id = match_id
