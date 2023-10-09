@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 from tkinter import ttk
 from tkinter import messagebox
 from game_logic.Tabuleiro import Tabuleiro
@@ -77,5 +78,4 @@ class Janela(tk.Tk):
     def mostrar_mensagem(self, mensagem):
         messagebox.showinfo(message=mensagem)
     
-        
         

@@ -47,8 +47,8 @@ class ActorPlayer(PyNetgamesServerListener):
         def receive_connection_success(self):    # Pyng use case "receive connection"
             self.janela.mostrar_mensagem('Conectado ao servidor')  
             self.janela.estado_conectado() 
-            self.send_match(2)    # Pyng use case "send match"
-
+            self.send_match(2) 
+            
         def receive_disconnect(self):    # Pyng use case "receive disconnect"
             self.janela.mostrar_mensagem('Desconectado do servidor')
             self.remove_listener()
@@ -60,8 +60,9 @@ class ActorPlayer(PyNetgamesServerListener):
         def receive_error(self, error):    # Pyng use case "receive error"
             self.janela.mostrar_mensagem('Notificação de erro do servidor. Feche o programa. ')
 
+
         def receive_match(self, match):	# Pyng use case "receive match"
-            self.janela.mostrar_mensagem('Partida iniciada. ID: ')
+            self.janela.mostrar_mensagem('Partida iniciada') 
             self.set_match_id(match.match_id)
             return
 
@@ -69,9 +70,8 @@ class ActorPlayer(PyNetgamesServerListener):
             self.server_proxy.send_move(self.match_id, move)
         
         def receive_move(self, move):	# Pyng use case "receive move"
-            self.janela.mostrar_mensagem(f'Movimento recebido: {str(move)}')
-
-            
+            self.janela.mostrar_mensagem(str(move))
+  
 
         
 
